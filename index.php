@@ -9,29 +9,29 @@
             <tr><td>
                     <form action="controller/controller.php">
                         <input type="hidden" value="listar" name="opcion">
-                        <input type="submit" value="Consultar listado">
+                        <input type="submit" style="width: 150px; height: 60px;" value="Consultar listado">
                     </form>
                 </td>
                 <td>
                     <form action="controller/controller.php">
                         <input type="hidden" value="listar_desc" name="opcion">
-                        <input type="submit" value="Consultar listado descendente">
+                        <input type="submit" style="width: 200px; height: 60px;" value="Consultar listado descendente">
                     </form>
                 </td><td>
                     <form action="controller/controller.php">
                         <input type="hidden" value="crear" name="opcion">
-                        <input type="submit" value="Crear producto">
+                        <input type="submit" style="width: 150px; height: 60px;" value="Crear producto">
                     </form>
                 </td></tr>
         </table>
         <table border="1">
-            <tr>
-                <th>CODIGO</th>
-                <th>NOMBRE</th>
-                <th>PRECIO</th>
-                <th>CANTIDAD</th>
-                <th>ELIMINAR</th>
-                <th>ACTUALIZAR</th>
+            <tr bgcolor="#0066CC" bordercolor="#FFFFFF">
+                <th><font color="#FFFFFF">CODIGO</font></th>
+                <th><font color="#FFFFFF">NOMBRE</font></th>
+                <th><font color="#FFFFFF">PRECIO</font></th>
+                <th><font color="#FFFFFF">CANTIDAD</font></th>
+                <th><font color="#FFFFFF">ELIMINAR</font></th>
+                <th><font color="#FFFFFF">ACTUALIZAR</font></th>
             </tr>
             <?php
             session_start();
@@ -56,10 +56,12 @@
             }
             ?>
         </table>
+        <font color="#FF0000">
         <?php
         if (isset($_SESSION['valorTotal'])) {
             echo "VALOR TOTAL DE PRODUCTOS: <b>" . $_SESSION['valorTotal'] . "</b>";
         }
         ?>
+        </font>
     </body>
 </html>

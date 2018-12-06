@@ -49,7 +49,7 @@ switch ($opcion) {
         }
        // $productoModel->crearProducto($codigo, $nombre, $precio, $cantidad);
 //actualizamos la lista de productos para grabar en sesion:
-        $listado = $productoModel->getProductos();
+        $listado = $productoModel->getProductos(true);
         $_SESSION['listado'] = serialize($listado);
         header('Location: ../index.php');
         break;
@@ -59,7 +59,7 @@ switch ($opcion) {
 //eliminamos el producto:
         $productoModel->eliminarProducto($codigo);
 //actualizamos la lista de productos para grabar en sesion:
-        $listado = $productoModel->getProductos();
+        $listado = $productoModel->getProductos(true);
         $_SESSION['listado'] = serialize($listado);
         header('Location: ../index.php');
         break;
