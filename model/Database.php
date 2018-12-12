@@ -36,7 +36,7 @@ class Database {
         if (null == self::$conexion) {
             try {
               //  self::$conexion = new PDO("mysql:host=" . self::$dbHost . ";" . "dbname=" . self::$dbName, self::$dbUsername, self::                      $dbUserPassword);
-			self::$conexion =  new PDO('pgsql:host=ec2-54-204-40-248.compute-1.amazonaws.com;port=5432;dbname=d15ugb7kjo88j','gtoaprivpyoaqd','7385eda763f5a058e410849c3e4bf6f10aac389df3fb4d1de8aed9c69c6fe6ef'); 
+			self::$conexion =  new PDO('pgsql:host=ec2-54-204-40-248.compute-1.amazonaws.com;port=5433;dbname=d15ugb7kjo88j','gtoaprivpyoaqd','7385eda763f5a058e410849c3e4bf6f10aac389df3fb4d1de8aed9c69c6fe6ef'); 
 			 
             } catch (PDOException $e) {
                 die($e->getMessage());
