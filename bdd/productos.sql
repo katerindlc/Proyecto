@@ -1,11 +1,11 @@
---
+﻿--
 -- PostgreSQL database dump
 --
 
 -- Dumped from database version 9.5.14
 -- Dumped by pg_dump version 9.5.14
 
--- Started on 2018-12-10 12:41:03
+-- Started on 2018-12-10 11:52:29
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -14,7 +14,7 @@ SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
+--SET row_security = off;
 
 --
 -- TOC entry 1 (class 3079 OID 12355)
@@ -46,8 +46,8 @@ DECLARE
 
 BEGIN
 
-update detallefactura set subtotal=cantidad*precio  where ref_factura=NEW.ref_factura;
-update factura set total=(select sum(subtotal) from detallefactura where ref_factura=NEW.ref_factura) WHERE id=NEW.ref_factura;
+update detallefactura set subtotal=cantidad*precio;
+update factura set total=(select sum(subtotal) from detallefactura where ref_factura=NEW.ref_factura);
 
 return null;
 END;
@@ -224,9 +224,6 @@ ALTER TABLE ONLY public.factura ALTER COLUMN id SET DEFAULT nextval('public.fact
 -- Data for Name: clientes; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.clientes (id, cedula, nombres, apellidos) VALUES (1, '100522', 'PATY', 'TITUAÑA');
-INSERT INTO public.clientes (id, cedula, nombres, apellidos) VALUES (2, '100533', 'FERNANDA', 'BENAVIDES');
-INSERT INTO public.clientes (id, cedula, nombres, apellidos) VALUES (3, '100544', 'FAUSTO', 'LUCANO');
 
 
 --
@@ -235,7 +232,7 @@ INSERT INTO public.clientes (id, cedula, nombres, apellidos) VALUES (3, '100544'
 -- Name: clientes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.clientes_id_seq', 3, true);
+SELECT pg_catalog.setval('public.clientes_id_seq', 1, false);
 
 
 --
@@ -244,8 +241,6 @@ SELECT pg_catalog.setval('public.clientes_id_seq', 3, true);
 -- Data for Name: detallefactura; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.detallefactura (id, ref_factura, ref_producto, cantidad, precio, subtotal) VALUES (1, 1, 1, 12, 0.32, 3.84);
-INSERT INTO public.detallefactura (id, ref_factura, ref_producto, cantidad, precio, subtotal) VALUES (2, 1, 1, 3, 0.50, 1.50);
 
 
 --
@@ -254,7 +249,7 @@ INSERT INTO public.detallefactura (id, ref_factura, ref_producto, cantidad, prec
 -- Name: detallefactura_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.detallefactura_id_seq', 2, true);
+SELECT pg_catalog.setval('public.detallefactura_id_seq', 1, false);
 
 
 --
@@ -263,9 +258,6 @@ SELECT pg_catalog.setval('public.detallefactura_id_seq', 2, true);
 -- Data for Name: factura; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.factura (id, ref_cliente, fecha, total) VALUES (1, 1, '2018-12-10', 5.34);
-INSERT INTO public.factura (id, ref_cliente, fecha, total) VALUES (2, 1, '2018-12-10', 5.34);
-INSERT INTO public.factura (id, ref_cliente, fecha, total) VALUES (3, 2, '2018-12-10', 5.34);
 
 
 --
@@ -274,7 +266,7 @@ INSERT INTO public.factura (id, ref_cliente, fecha, total) VALUES (3, 2, '2018-1
 -- Name: factura_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.factura_id_seq', 3, true);
+SELECT pg_catalog.setval('public.factura_id_seq', 1, false);
 
 
 --
@@ -352,7 +344,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2018-12-10 12:41:03
+-- Completed on 2018-12-10 11:52:29
 
 --
 -- PostgreSQL database dump complete
